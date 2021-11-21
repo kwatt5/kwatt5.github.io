@@ -47,7 +47,7 @@
 
          major_type = data.filter(getMajor)       // meal_itmes array will contain the filtered data using the getMeal() function
          function getMajor(item) {
-            return type.major == selected_major;   // the new meal_items array will contain only items for the selected meal
+            return item.major == selected_major;   // the new meal_items array will contain only items for the selected meal
          }
         
         if (request.status == 200) {    // if all is well as data returns, then compile and populate the template
