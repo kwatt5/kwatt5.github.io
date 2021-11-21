@@ -16,7 +16,7 @@
       <h2>Select a major</h2>
       <div style='padding: 5px;'> 
          <button type='button' class="btn btn-primary" onClick="getData('CIT')">CIT Major</button> 
-         <button type='button' class="btn btn-primary" onClick="getData('major')">Business Major</button> 
+         <button type='button' class="btn btn-primary" onClick="getData('BUS')">Business Major</button> 
          
       </div>
       <div id="majorTable"></div>
@@ -38,19 +38,19 @@
   <!-- application ajax code -->
   <script>
 
-  function getData(selected_major) {      // called when a button is clicked. paramter selected_meal = breakfast, lunch, or dinner
+  function getData(selected_major) {      
       var request = new XMLHttpRequest();
-      request.open('GET', 'index.json');      // open Ajax request for data file me.json
+      request.open('GET', 'index.json');      
  
-      request.onload = function() {                     // when the data comes back, browser calls this function
-         var data = JSON.parse(request.responseText);    // convert json to javascript array of objects
+      request.onload = function() {                     
+         var data = JSON.parse(request.responseText);    
 
-         major_type = data.filter(getMajor)       // meal_itmes array will contain the filtered data using the getMeal() function
+         major_type = data.filter(getMajor)       
          function getMajor(item) {
-            return item.major == selected_major;   // the new meal_items array will contain only items for the selected meal
+            return item.major == selected_major;   
          }
         
-        if (request.status == 200) {    // if all is well as data returns, then compile and populate the template
+        if (request.status == 200) {   
             var templateText = document.getElementById('tableTemplate').innerHTML;
             var compiledTemplateText = Handlebars.compile(templateText);       
             compiledHtml = compiledTemplateText({ rows: major_type })          
